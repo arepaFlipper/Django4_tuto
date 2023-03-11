@@ -8,6 +8,4 @@ def api_home(request, *args,**kwargs):
     data = {}
     if model_data:
         data = model_to_dict(model_data, fields=['id','title','price'])
-        data['price']= str(data['price'])
-        json_data_str = json.dumps(data)
-    return HttpResponse(json_data_str, headers={"content-type":"application/json"})
+    return JsonResponse(data)
