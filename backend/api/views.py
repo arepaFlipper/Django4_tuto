@@ -14,6 +14,6 @@ def api_home(request, *args,**kwargs):
     print(body) ## DELETEME
     print('\x1b[0m') ## DELETEME
     print("""🚮   \x1b[1;35;40mviews.py:16  data:""") ## DELETEME
-    print(data) ## DELETEME
+    print(data.keys()) ## DELETEME
     print('\x1b[0m') ## DELETEME
     return JsonResponse({'message': "Hi there, this is your Django API response!!"})
