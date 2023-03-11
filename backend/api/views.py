@@ -14,4 +14,8 @@ def api_home(request, *args,**kwargs):
     print("""🚮   \x1b[1;35;40mviews.py:16  data:""") ## DELETEME
     print(data) ## DELETEME
     print('\x1b[0m') ## DELETEME
+    print("""🇿🇦   \x1b[1;37;42mviews.py:18  request.headers:""") ## DELETEME
+    print(request.headers) ## DELETEME
+    print('\x1b[0m') ## DELETEME
+    data['content_type'] = request.content_type
     return JsonResponse(data)
