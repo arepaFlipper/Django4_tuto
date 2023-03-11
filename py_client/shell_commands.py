@@ -6,3 +6,4 @@ prod_obj.sale_price
 prod_obj = Product.objects.last()
 prod_obj.sale_price
 prod_obj.sale_price
+prod_obj.price
