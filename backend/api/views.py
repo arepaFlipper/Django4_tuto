@@ -17,10 +17,9 @@ def api_home(request, *args,**kwargs):
     print("""📳   \x1b[1;33;40mviews.py:20  request.data:""") ## DELETEME
     print(request.data) ## DELETEME
     print('\x1b[0m') ## DELETEME
-    if serializer.is_valid():
+    if serializer.is_valid(raise_exception=True):
         instance= serializer.save()
         print("""☎️   \x1b[1;36;40mviews.py:22  instance:""") ## DELETEME
         print(serializer.data) ## DELETEME
         print('\x1b[0m') ## DELETEME
         return Response(serializer.data)
-    return Response({"invalid":"not good data"}, status=400)
