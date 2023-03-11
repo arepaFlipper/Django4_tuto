@@ -12,7 +12,8 @@ services:
     env_file:
       - ./.env
     volumes: 
-      - ./.env:/tuto/.env
+      - ./.env:/REST/.env
+      - ./backend:/REST/backend
     ports:
       - ${PORT}:8000
     working_dir: /REST/
