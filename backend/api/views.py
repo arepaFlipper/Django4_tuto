@@ -7,8 +7,6 @@ def api_home(request, *args,**kwargs):
     try:
         data= json.loads(body)
     except Exception as e:
-        raise e
-    else:
         pass
     print("""😲   \x1b[1;33;40mviews.py:6   body:""") ## DELETEME
     print(body) ## DELETEME
