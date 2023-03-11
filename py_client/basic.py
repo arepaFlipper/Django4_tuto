@@ -2,7 +2,7 @@ import requests
 
 # endpoint = "https://httpbin.org/status/200/"
 # endpoint = "https://httpbin.org/anything"
-endpoint = "http://localhost:7890/api"
+endpoint = "http://localhost:7890/api/"
 
 print("""🖼️   \x1b[1;37;40mbasic.py:7   requests.__version__:""") ## DELETEME
 print(requests.__version__) ## DELETEME
