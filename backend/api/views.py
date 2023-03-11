@@ -18,6 +18,8 @@ def api_home(request, *args,**kwargs):
     print(request.data) ## DELETEME
     print('\x1b[0m') ## DELETEME
     if serializer.is_valid():
-        print(serializer.data)
-        data = serializer.data
-        return Response(data)
+        instance= serializer.save()
+        print("""☎️   \x1b[1;36;40mviews.py:22  instance:""") ## DELETEME
+        print(instance) ## DELETEME
+        print('\x1b[0m') ## DELETEME
+        return Response(serializer.data)
