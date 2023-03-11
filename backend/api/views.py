@@ -1,5 +1,5 @@
-import json
 from django.forms.models import model_to_dict
+import json
 from django.http import JsonResponse, HttpResponse
 from products.models import Product
 
@@ -8,4 +8,5 @@ def api_home(request, *args,**kwargs):
     data = {}
     if model_data:
         data = model_to_dict(model_data, fields=['id','title'])
-    return HttpResponse(data, headers={"content-type":"application/json"})
+        json_data_str = json.dumps(data)
+    return HttpResponse(json_data_str, headers={"content-type":"application/json"})
