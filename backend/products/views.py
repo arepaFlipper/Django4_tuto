@@ -35,6 +35,7 @@ product_detail_view = ProductDetailAPIView.as_view()
 class ProductUpdateAPIView(UpdateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    permission_classes = [DjangoModelPermissions]
     lookup_field = "pk"
 
     def perform_update(self,serializer):
