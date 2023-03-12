@@ -50,11 +50,15 @@ class ProductDeleteAPIView(DestroyAPIView):
 
 product_delete_view = ProductDeleteAPIView.as_view()
 
-class ProductMixinView(ListModelMixin ,GenericAPIView):
+class ProductMixinView(ListModelMixin, RetrieveModelMixin, GenericAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    lookup_field = 'pk'
 
     def get(self, request, *args, **kwargs):
+        print("""📳   \x1b[1;31;46mviews.py:62  args, kwargs:""") ## DELETEME
+        print(args, kwargs) ## DELETEME
+        print('\x1b[0m') ## DELETEME
         return self.list(request, *args, **kwargs)
 
 product_mixin_view = ProductMixinView.as_view()
