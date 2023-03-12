@@ -10,7 +10,11 @@ class ProductCreateAPIView(generics.CreateAPIView):
         print("""🐹   \x1b[1;36;40mviews.py:10  serializer:""") ## DELETEME
         print(serializer.validated_data) ## DELETEME
         print('\x1b[0m') ## DELETEME
-        serializer.save()
+        title = serializer.validated_data.get('title')
+        content = serializer.validated_data.get('content') or None
+        if content is None:
+            content = title
+        serializer.save(content=content)
 
 product_create_view = ProductCreateAPIView.as_view()
 
