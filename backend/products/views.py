@@ -64,4 +64,12 @@ class ProductMixinView(ListModelMixin, RetrieveModelMixin, GenericAPIView, Creat
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
 
+    def perform_create(self, serializer):
+        title = serializer.validated_data.get('title')
+        content = serializer.validated_data.get('content') or None
+        if content is None:
+            content = "this is a single view doing cool stuff"
+
+        serializer.save(content=content)
+
 product_mixin_view = ProductMixinView.as_view()
