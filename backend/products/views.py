@@ -1,4 +1,4 @@
-from rest_framework.generics import ListCreateAPIView, RetrieveAPIView,UpdateAPIView, DestroyAPIView, GenericAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveAPIView,UpdateAPIView, DestroyAPIView, GenericAPIView, CreateAPIView
 from rest_framework.mixins import ListModelMixin, RetrieveModelMixin, CreateModelMixin
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
@@ -7,7 +7,7 @@ from .serializers import ProductSerializer
 from rest_framework.decorators import api_view
 from django.shortcuts import get_object_or_404
 
-class ProductListCreateAPIView(ListCreateAPIView):
+class ProductListCreateAPIView(CreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
