@@ -6,6 +6,12 @@ class ProductCreateAPIView(generics.CreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
+    def perform_create(self, serializer):
+        print("""🐹   \x1b[1;36;40mviews.py:10  serializer:""") ## DELETEME
+        print(serializer) ## DELETEME
+        print('\x1b[0m') ## DELETEME
+        serializer.save()
+
 product_create_view = ProductCreateAPIView.as_view()
 
 class ProductDetailAPIView(generics.RetrieveAPIView):
