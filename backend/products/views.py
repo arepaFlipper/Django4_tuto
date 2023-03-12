@@ -2,6 +2,7 @@ from rest_framework.generics import ListCreateAPIView, RetrieveAPIView,UpdateAPI
 from rest_framework.mixins import ListModelMixin, RetrieveModelMixin, CreateModelMixin
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
+from rest_framework.authentication import SessionAuthentication
 from .models import Product
 from .serializers import ProductSerializer
 from rest_framework.decorators import api_view
@@ -11,6 +12,7 @@ class ProductListCreateAPIView(CreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
+    authentication_classes = [SessionAuthentication]
 
     def perform_create(self, serializer):
         print("""🐹   \x1b[1;36;40mviews.py:10  serializer:""") ## DELETEME
