@@ -56,9 +56,9 @@ class ProductMixinView(ListModelMixin, RetrieveModelMixin, GenericAPIView):
     lookup_field = 'pk'
 
     def get(self, request, *args, **kwargs):
-        print("""📳   \x1b[1;31;46mviews.py:62  args, kwargs:""") ## DELETEME
-        print(args, kwargs) ## DELETEME
-        print('\x1b[0m') ## DELETEME
+        pk = kwargs.get("pk")
+        if pk is not None:
+            return self.retrieve(request, *args, **kwargs)
         return self.list(request, *args, **kwargs)
 
 product_mixin_view = ProductMixinView.as_view()
