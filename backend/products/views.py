@@ -1,5 +1,5 @@
 from rest_framework.generics import ListCreateAPIView, RetrieveAPIView,UpdateAPIView, DestroyAPIView, GenericAPIView
-from rest_framework.mixins import ListModelMixin, RetrieveModelMixin
+from rest_framework.mixins import ListModelMixin, RetrieveModelMixin, CreateModelMixin
 from rest_framework.response import Response
 from .models import Product
 from .serializers import ProductSerializer
@@ -50,7 +50,7 @@ class ProductDeleteAPIView(DestroyAPIView):
 
 product_delete_view = ProductDeleteAPIView.as_view()
 
-class ProductMixinView(ListModelMixin, RetrieveModelMixin, GenericAPIView):
+class ProductMixinView(ListModelMixin, RetrieveModelMixin, GenericAPIView, CreateModelMixin):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     lookup_field = 'pk'
@@ -60,5 +60,8 @@ class ProductMixinView(ListModelMixin, RetrieveModelMixin, GenericAPIView):
         if pk is not None:
             return self.retrieve(request, *args, **kwargs)
         return self.list(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
 
 product_mixin_view = ProductMixinView.as_view()
