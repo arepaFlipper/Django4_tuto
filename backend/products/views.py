@@ -1,14 +1,8 @@
-from rest_framework.generics import ListCreateAPIView, RetrieveAPIView,UpdateAPIView, DestroyAPIView, GenericAPIView, CreateAPIView
-from rest_framework.mixins import ListModelMixin, RetrieveModelMixin, CreateModelMixin
-from rest_framework.permissions import DjangoModelPermissions, IsAdminUser
-from rest_framework.response import Response
-from rest_framework.authentication import SessionAuthentication
-from api.authentication import TokenAuthentication
+from rest_framework.generics import ListCreateAPIView 
+from rest_framework.permissions import  IsAdminUser
 from .models import Product
 from .permissions import IsStaffEditorPermission
 from .serializers import ProductSerializer
-from rest_framework.decorators import api_view
-from django.shortcuts import get_object_or_404
 
 class ProductListCreateAPIView(ListCreateAPIView):
     queryset = Product.objects.all()
