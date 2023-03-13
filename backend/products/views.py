@@ -2,7 +2,7 @@ from rest_framework.generics import ListCreateAPIView, RetrieveAPIView,UpdateAPI
 from rest_framework.mixins import ListModelMixin, RetrieveModelMixin, CreateModelMixin
 from rest_framework.permissions import DjangoModelPermissions, IsAdminUser
 from rest_framework.response import Response
-from rest_framework.authentication import SessionAuthentication
+from rest_framework.authentication import SessionAuthentication, TokenAuthentication
 from .models import Product
 from .permissions import IsStaffEditorPermission
 from .serializers import ProductSerializer
@@ -13,7 +13,7 @@ class ProductListCreateAPIView(ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     permission_classes = [IsAdminUser,IsStaffEditorPermission]
-    authentication_classes = [SessionAuthentication]
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
 
     def perform_create(self, serializer):
         print("""🐹   \x1b[1;36;40mviews.py:10  serializer:""") ## DELETEME

@@ -1,9 +1,22 @@
 import requests
+from getpass import getpass
 
-endpoint = "http://localhost:7890/api/products/"
-
-get_response = requests.get( endpoint)
-print("status_code: "+str(get_response.status_code)) ## DELETEME
-print("""📗 \x1b[1;36;40mget_response.status_code:""") ## DELETEME
-print(get_response.json())
+auth_endpoint = "http://localhost:7890/api/auth/" 
+username = input("What is your username?\n")
+password = getpass("What is your password?\n")
+print("""🇹🇯   \x1b[1;33;40mlist.py:7    password:""") ## DELETEME
+print(password) ## DELETEME
 print('\x1b[0m') ## DELETEME
+
+auth_response = requests.post(auth_endpoint, json={'username': username, 'password': password}) 
+print(auth_response.json())
+
+if auth_response.status_code == 200:
+    token = auth_response.json()['token']
+    headers = {
+        "Authorization": f"Bearer {token}"
+    }
+    endpoint = "http://localhost:7890/api/products/" 
+
+    get_response = requests.get(endpoint, headers=headers) 
+    print(get_response.json())
