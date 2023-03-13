@@ -1,13 +1,12 @@
 from rest_framework.generics import ListCreateAPIView 
 from rest_framework.permissions import  IsAdminUser
 from .models import Product
-from .permissions import IsStaffEditorPermission
+from api.mixins import StaffEditorPermissionMixin
 from .serializers import ProductSerializer
 
-class ProductListCreateAPIView(ListCreateAPIView):
+class ProductListCreateAPIView(ListCreateAPIView, StaffEditorPermissionMixin):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    permission_classes = [IsAdminUser,IsStaffEditorPermission]
 
     def perform_create(self, serializer):
         print("""🐹   \x1b[1;36;40mviews.py:10  serializer:""") ## DELETEME
