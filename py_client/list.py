@@ -7,7 +7,7 @@ print("""❔   \x1b[1;33;40mlist.py:6    token:""") ## DELETEME
 print(token) ## DELETEME
 print('\x1b[0m') ## DELETEME
 headers = {
-    "Authorization": f"Token {token}"
+    "Authorization": f"Bearer {token}"
 }
 get_response = requests.get(endpoint, headers=headers)
 print("status_code: "+str(get_response.status_code)) ## DELETEME

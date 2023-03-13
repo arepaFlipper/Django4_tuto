@@ -2,7 +2,8 @@ from rest_framework.generics import ListCreateAPIView, RetrieveAPIView,UpdateAPI
 from rest_framework.mixins import ListModelMixin, RetrieveModelMixin, CreateModelMixin
 from rest_framework.permissions import DjangoModelPermissions, IsAdminUser
 from rest_framework.response import Response
-from rest_framework.authentication import SessionAuthentication, TokenAuthentication
+from rest_framework.authentication import SessionAuthentication
+from api.authentication import TokenAuthentication
 from .models import Product
 from .permissions import IsStaffEditorPermission
 from .serializers import ProductSerializer
