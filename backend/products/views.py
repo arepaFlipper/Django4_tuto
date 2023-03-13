@@ -14,7 +14,6 @@ class ProductListCreateAPIView(ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     permission_classes = [IsAdminUser,IsStaffEditorPermission]
-    authentication_classes = [SessionAuthentication, TokenAuthentication]
 
     def perform_create(self, serializer):
         print("""🐹   \x1b[1;36;40mviews.py:10  serializer:""") ## DELETEME
