@@ -1,8 +1,8 @@
 from rest_framework.routers import DefaultRouter
-from products.viewsets import ProductViewSet
+from products.viewsets import ProductGenericViewSet
 
 router = DefaultRouter()
-router.register('products-abc', ProductViewSet, basename='products')
+router.register('products', ProductGenericViewSet, basename='products')
 
 print("""📗   \x1b[1;34;40mrouters.py:7 router.urls:""") ## DELETEME
 print(router.urls) ## DELETEME
