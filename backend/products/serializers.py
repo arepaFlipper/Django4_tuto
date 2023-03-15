@@ -23,7 +23,7 @@ class ProductSerializer(serializers.ModelSerializer):
         print("""📅   \x1b[1;30;43mserializers.py:23    value:""") ## DELETEME
         print(value) ## DELETEME
         print('\x1b[0m') ## DELETEME
-        qs = Product.objects.filter(title__exact=value)
+        qs = Product.objects.filter(title__iexact=value)
         print("""📺   \x1b[1;33;40mserializers.py:24    qs:""") ## DELETEME
         print(qs) ## DELETEME
         print('\x1b[0m') ## DELETEME
