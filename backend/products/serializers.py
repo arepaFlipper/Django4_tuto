@@ -30,8 +30,8 @@ class ProductSerializer(serializers.ModelSerializer):
         return obj
 
     def update(self, instance, validated_data):
-        instance.title = validated_data.get('title')
-        return instance
+        email = validated_data.pop('email')
+        return super().update(instance,validated_data)
 
     def get_edit_url(self, obj):
         request = self.context.get('request')
