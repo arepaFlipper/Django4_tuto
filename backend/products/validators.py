@@ -14,7 +14,9 @@ def validate_title(value):
     return value
 
 def validate_title_no_hello(value):
-    forbidden_title = "duplicate me"
+    forbidden_title = "hello"
     if forbidden_title in value.lower():
-        raise serializers.ValidationError(f"'{forbidden_title}' is not allowed")
+        raise serializers.ValidationError(f"'{value}' is not allowed")
     return value
+
+unique_product_title = UniqueValidator(queryset=Product.objects.all(), lookup='iexact')
