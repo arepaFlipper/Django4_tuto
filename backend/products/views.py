@@ -13,6 +13,10 @@ class ProductListCreateAPIView(ListCreateAPIView, StaffEditorPermissionMixin):
         print(serializer.validated_data) ## DELETEME
         print('\x1b[0m') ## DELETEME
         title = serializer.validated_data.get('title')
+        email = serializer.validated_data.get('email')
+        print("""🌌   \x1b[1;32;40mviews.py:17  email:""") ## DELETEME
+        print(email) ## DELETEME
+        print('\x1b[0m') ## DELETEME
         content = serializer.validated_data.get('content') or None
         if content is None:
             content = title
