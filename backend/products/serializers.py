@@ -29,6 +29,10 @@ class ProductSerializer(serializers.ModelSerializer):
         print('\x1b[0m') ## DELETEME
         return obj
 
+    def update(self, instance, validated_data):
+        instance.title = validated_data.get('title')
+        return instance
+
     def get_edit_url(self, obj):
         request = self.context.get('request')
         if request is None:
