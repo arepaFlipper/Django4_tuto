@@ -9,14 +9,7 @@ class ProductListCreateAPIView(ListCreateAPIView, StaffEditorPermissionMixin):
     serializer_class = ProductSerializer
 
     def perform_create(self, serializer):
-        print("""🐹   \x1b[1;36;40mviews.py:10  serializer:""") ## DELETEME
-        print(serializer.validated_data) ## DELETEME
-        print('\x1b[0m') ## DELETEME
         title = serializer.validated_data.get('title')
-        email = serializer.validated_data.get('email')
-        print("""🌌   \x1b[1;32;40mviews.py:17  email:""") ## DELETEME
-        print(email) ## DELETEME
-        print('\x1b[0m') ## DELETEME
         content = serializer.validated_data.get('content') or None
         if content is None:
             content = title
