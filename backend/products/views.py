@@ -1,4 +1,4 @@
-from rest_framework.generics import ListCreateAPIView, RetrieveAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveAPIView, UpdateAPIView
 from rest_framework.permissions import  IsAdminUser
 from .models import Product
 from api.mixins import StaffEditorPermissionMixin
@@ -25,3 +25,15 @@ class ProductDetailAPIView(StaffEditorPermissionMixin, RetrieveAPIView):
     serializer_class = ProductSerializer
 
 product_detail_view = ProductDetailAPIView.as_view()
+
+class ProductUpdateAPIView(StaffEditorPermissionMixin, UpdateAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    lookup_field = 'pk'
+
+    def perform_update(self, serializer):
+        instance = serializer.save()
+        if not instance.content:
+            instance.content = instance.title
+
+product_update_view = ProductUpdateAPIView.as_view()
