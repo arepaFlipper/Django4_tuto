@@ -14,7 +14,7 @@ def validate_title(value):
     return value
 
 def validate_title_no_hello(value):
-    forbidden_title = "hello"
+    forbidden_title = "duplicate me"
     if forbidden_title in value.lower():
         raise serializers.ValidationError(f"'{forbidden_title}' is not allowed")
     return value
