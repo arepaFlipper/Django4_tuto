@@ -21,6 +21,14 @@ class ProductSerializer(serializers.ModelSerializer):
             'my_discount',
         ]
 
+    def create(self,validated_data):
+        email =validated_data.pop('email')
+        obj = super().create(validated_data)
+        print("""🛗   \x1b[1;36;40mserializers.py:26    email,obj:""") ## DELETEME
+        print(email,obj) ## DELETEME
+        print('\x1b[0m') ## DELETEME
+        return obj
+
     def get_edit_url(self, obj):
         request = self.context.get('request')
         if request is None:
