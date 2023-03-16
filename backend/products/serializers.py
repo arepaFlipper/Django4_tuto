@@ -5,7 +5,7 @@ from .validators import validate_title_no_hello, unique_product_title
 from api.serializers import UserPublicSerializer
 
 class ProductSerializer(serializers.ModelSerializer):
-    user = UserPublicSerializer(read_only=True)
+    owner = UserPublicSerializer(source="user",read_only=True)
     my_user_data = serializers.SerializerMethodField(read_only=True)
     my_discount = serializers.SerializerMethodField(read_only=True)
     edit_url = serializers.SerializerMethodField(read_only=True)
@@ -15,7 +15,7 @@ class ProductSerializer(serializers.ModelSerializer):
         model = Product
         fields =[
             'url',
-            'user',
+            'owner',
             'edit_url',
             'pk',
             'title',
@@ -30,7 +30,6 @@ class ProductSerializer(serializers.ModelSerializer):
         request = self.context.get('request')
         if request is None:
             return None
-
         return reverse("product-edit", kwargs={"pk":obj.pk},request=request)
 
     def get_my_discount(self,obj):
@@ -39,6 +38,7 @@ class ProductSerializer(serializers.ModelSerializer):
         if not isinstance(obj, Product):
             return None
         return obj.get_discount()
+
     def get_my_user_data(self, obj):
         return {
             "username": obj.user.username,
