@@ -16,13 +16,12 @@ class ProductListCreateAPIView(ListCreateAPIView, StaffEditorPermissionMixin):
         serializer.save(user=self.request.user, content=content)
 
     def get_queryset(self, *args, **kwargs):
-        qs = super().get_queryset(*args,**kwargs)
         request = self.request
         user = request.user
-        if not user.is_authenticated:
-            return Product.objects.none()
-        print(request.user)
-        return qs.filter(user=request.user)
+        print("""🩸   \x1b[1;36;40mviews.py:21  user:""") ## DELETEME
+        print(user) ## DELETEME
+        print('\x1b[0m') ## DELETEME
+        return super().get_queryset(*args,**kwargs)
 
 product_list_create_view = ProductListCreateAPIView.as_view()
 
