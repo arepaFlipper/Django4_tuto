@@ -8,6 +8,7 @@ class StaffEditorPermissionMixin():
 
 class UserQuerySetMixin():
     user_field = 'user'
+    allow_staff_view = False
     
     def get_queryset(self, *args, **kwargs):
         user = self.request.user
@@ -20,4 +21,6 @@ class UserQuerySetMixin():
         print("""🟫   \x1b[1;36;40mmixins.py:21 qs:""") ## DELETEME
         print(qs) ## DELETEME
         print('\x1b[0m') ## DELETEME
+        if user.is_admin:
+            return qs
         return qs.filter(**lookup_data)
