@@ -14,4 +14,4 @@ class UserPublicSerializer(serializers.Serializer):
         print('\x1b[0m') ## DELETEME
         user = obj
         my_products_qs = user.product_set.all()[:5]
-        return UserProductInlineSerializer(my_products_qs,many=True).data
+        return UserProductInlineSerializer(my_products_qs,many=True, context=self.context).data
