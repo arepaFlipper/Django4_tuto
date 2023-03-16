@@ -4,7 +4,8 @@ from .models import Product
 from api.mixins import StaffEditorPermissionMixin, UserQuerySetMixin
 from .serializers import ProductSerializer
 
-class ProductListCreateAPIView(ListCreateAPIView, StaffEditorPermissionMixin, UserQuerySetMixin):
+# class ProductListCreateAPIView( ListCreateAPIView, UserQuerySetMixin):
+class ProductListCreateAPIView( UserQuerySetMixin, ListCreateAPIView, StaffEditorPermissionMixin):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
