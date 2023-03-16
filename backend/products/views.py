@@ -1,10 +1,10 @@
 from rest_framework.generics import ListCreateAPIView, RetrieveAPIView, UpdateAPIView
 from rest_framework.permissions import  IsAdminUser
 from .models import Product
-from api.mixins import StaffEditorPermissionMixin
+from api.mixins import StaffEditorPermissionMixin, UserQuerySetMixin
 from .serializers import ProductSerializer
 
-class ProductListCreateAPIView(ListCreateAPIView, StaffEditorPermissionMixin):
+class ProductListCreateAPIView(ListCreateAPIView, StaffEditorPermissionMixin, UserQuerySetMixin):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
