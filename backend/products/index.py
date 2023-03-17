@@ -5,10 +5,6 @@ from .models import Product
 
 @register(Product)
 class ProductIndex(AlgoliaIndex):
-    fields = [
-        'title',
-        'content',
-        'price',
-        'user',
-        'public',
-    ]
+    should_index = 'is_public'
+    fields = [ 'title', 'content', 'price', 'user', 'public', ]
+    tags = 'get_tags_list'
