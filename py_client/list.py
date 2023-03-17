@@ -1,7 +1,7 @@
 import requests
 from auth_token import get_token
 
-endpoint = "http://localhost:7890/api/products/"
+endpoint = "http://localhost:7890/api/products/?limit=3&offset=8"
 token = get_token()
 print("""❔   \x1b[1;33;40mlist.py:6    token:""") ## DELETEME
 print(token) ## DELETEME
