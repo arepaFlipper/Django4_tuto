@@ -9,5 +9,3 @@ WORKDIR /REST
 RUN pip install --upgrade pip
 RUN pip install -r /REST/requirements.txt
 RUN chmod +x /REST/start.sh
-RUN python /REST/backend/manage.py makemigrations
-RUN python /REST/backend/manage.py migrate
