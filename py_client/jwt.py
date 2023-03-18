@@ -12,8 +12,8 @@ class JWTClient:
 
     cred_path: pathlib.Path = pathlib.Path("creds.json")
 
-    def __post__init__(self):
-        if self.cred_path.exist():
+    def __post_init__(self):
+        if self.cred_path.exists():
             try:
                 data = json.loads(self.cred_path.read_text())
             except Exception as e:

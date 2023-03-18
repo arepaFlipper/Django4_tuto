@@ -1,7 +1,7 @@
 algoliasearch-django>=2.0,<3.0
 django==4.0.2
 djangorestframework
-djangorestframework-simplejwt
+djangorestframework-simplejwt 
 pyyaml
 requests
 django-cors-headers
