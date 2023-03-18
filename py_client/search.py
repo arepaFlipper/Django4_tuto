@@ -1,7 +1,7 @@
 import requests
 from auth_token import get_token
 
-endpoint = "http://localhost:7890/api/search/?q=my%20old%20friend&tag=electronics"
+endpoint = "http://localhost:7890/api/search/?q=a&public=1&tag=cameras&user=staff"
 token = get_token()
 print("""❔   \x1b[1;33;40mlist.py:6    token:""") ## DELETEME
 print(token) ## DELETEME
