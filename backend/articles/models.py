@@ -33,7 +33,7 @@ class Article(models.Model):
         if self.make_public is None:
             return False
         now = timezone.now()
-        is_in_past = now <= self.publish_date
+        is_in_past = now >= self.publish_date
         return is_in_past and self.make_public
 
     def get_tags_list(self):
