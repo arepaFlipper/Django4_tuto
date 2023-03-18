@@ -19,6 +19,14 @@ class Article(models.Model):
 
     objects = ArticleManager()
 
+    @property
+    def path(self):
+        return f"/articles/{self.pk}"
+
+    @property
+    def endpoint(self):
+        return f"/api/articles/{self.pk}"
+
     def is_public(self):
         if self.publish_date is None:
             return False

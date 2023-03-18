@@ -6,4 +6,4 @@ class ArticleSerializer(ModelSerializer):
     author = UserPublicSerializer(source='user', read_only=True)
     class Meta:
         model = Article
-        fields = ['pk', 'author','title', 'body']
+        fields = ['pk', 'author','title', 'body', 'endpoint']

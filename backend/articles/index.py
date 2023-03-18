@@ -5,7 +5,7 @@ from .models import Article
 @register(Article)
 class ArticleIndex(AlgoliaIndex):
     should_index = 'is_public'
-    fields = ['title', 'body', 'user', 'publish_date']
+    fields = ['title', 'body', 'user', 'publish_date', 'endpoint']
     tags= 'get_tags_list'
     settings = {
         'searchableAttributes':['title', 'body'],
