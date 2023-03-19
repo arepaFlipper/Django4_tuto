@@ -16,7 +16,7 @@ const handleLogin = async (event) => {
   const options = {
     method: "POST",
     headers: {
-      "ContentType": "application/json"
+      "Content-Type": "application/json"
     },
     body: bodyStr
   }
