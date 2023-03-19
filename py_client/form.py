@@ -1,0 +1,14 @@
+curl 'http://192.168.1.21:8111/js_client/' \
+  -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9' \
+  -H 'Accept-Language: en-US,en;q=0.9' \
+  -H 'Cache-Control: max-age=0' \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'Cookie: csrftoken=waiKIedhebDi3pqUjXx53L3ZxIvNuPabAU7tGLUbOci5t7Gk7YkcMe25xEzGC89o; sessionid=wv09uogfu8aw056y9y6e059uajysn8bk' \
+  -H 'Origin: http://192.168.1.21:8111' \
+  -H 'Referer: http://192.168.1.21:8111/js_client/' \
+  -H 'Upgrade-Insecure-Requests: 1' \
+  -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36' \
+  --data-raw 'username=df&password=dfasdf' \
+  --compressed \
+  --insecure
