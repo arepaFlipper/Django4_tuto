@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-import os
+import os,datetime
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -146,4 +146,10 @@ ALGOLIA = {
     'APPLICATION_ID':os.environ['APPLICATION_ID'],
     'API_KEY':os.environ['ADMIN_API_KEY'],
     'INDEX_PREFIX':os.environ['INDEX_PREFIX'],
+}
+
+SIMPLE_JWT = {
+    "AUTH_HEADER_TYPES": ["Bearer"],
+    "ACCESS_TOKEN_LIFETIME":datetime.timedelta(seconds=30),
+    "REFRESH_TOKEN_LIFETIME":datetime.timedelta(minutes=1),
 }
