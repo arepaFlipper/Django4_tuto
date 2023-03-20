@@ -20,7 +20,4 @@ class Command(BaseCommand):
         if len(index_filters) != 0:
             params['facetFilters'] = index_filters
         results = index.search(query, params)
-        print("""🇵🇦   \x1b[1;36;40mperform_search.py:22 results:""") ## DELETEME
-        print(results) ## DELETEME
-        print('\x1b[0m') ## DELETEME
 

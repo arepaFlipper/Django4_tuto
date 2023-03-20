@@ -12,8 +12,6 @@ if (searchForm) {
 }
 
 const handleLogin = async (event) => {
-  console.log(`🧳%cclient.js:9 - event`, 'font-weight:bold; background:#2fd000;color:#fff;'); //DELETEME
-  console.log(event); // DELETEME
   event.preventDefault();
   const loginEndpoint = `${baseEndpoint}/token/`;
   let loginFormData = new FormData(loginForm);
@@ -31,8 +29,6 @@ const handleLogin = async (event) => {
   try {
     const response = await fetch(loginEndpoint, options);
     const data = await response.json();
-    console.log(`🎇%cclient.js:30 - datax`, 'font-weight:bold; background:#738c00;color:#fff;'); //DELETEME
-    console.log(datax); // DELETEME
     handleAuthData(data, getProductList);
   } catch (err) {
     console.log('err', err);
@@ -40,8 +36,6 @@ const handleLogin = async (event) => {
 }
 
 const handleSearch = (event) => {
-  console.log(`🔺%cclient.js:43 - event`, 'font-weight:bold; background:#8c7300;color:#fff;'); //DELETEME
-  console.log(event); // DELETEME
   event.preventDefault()
   let formData = new FormData(searchForm)
   let data = Object.fromEntries(formData)
@@ -123,14 +117,10 @@ const validateJWTToken = async () => {
   try {
     const res = fetch(endpoint, options);
     const dat0 = await res.json()
-    console.log(`🚼%cclient.js:74 - dat0`, 'font-weight:bold; background:#af5000;color:#fff;'); //DELETEME
-    console.log(dat0); // DELETEME
     isTokenNotValid(dat0);
 
   } catch (error) {
 
-    console.log(`🇸🇷%cclient.js:81 - error`, 'font-weight:bold; background:#b44b00;color:#fff;'); //DELETEME
-    console.log(error); // DELETEME
   }
 }
 
@@ -146,8 +136,6 @@ const getProductList = async () => {
   const response = await fetch(endpoint, options);
   const data = await response.json();
   isTokenNotValid(data);
-  console.log(`♏%cclient.js:57 - data`, 'font-weight:bold; background:#9f6000;color:#fff;'); //DELETEME
-  console.log(data); // DELETEME
   if (validData) {
     writeToContainer(data)
   }

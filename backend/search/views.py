@@ -15,7 +15,4 @@ class SearchListView(GenericAPIView):
         if not query:
             return Response('', status=400)
         results = client.perform_search(query, tags=tag, user=user, public=public)
-        print("""🇨🇵   \x1b[1;30;41mperform_search.py:23 user:""") ## DELETEME
-        print(user,query,public, tag) ## DELETEME
-        print('\x1b[0m') ## DELETEME
         return Response(results)

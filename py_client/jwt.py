@@ -17,8 +17,6 @@ class JWTClient:
             try:
                 data = json.loads(self.cred_path.read_text())
             except Exception as e:
-                print("""9️⃣   \x1b[1;31;40mjwt.py:21    Assuming creds has been tampered with""") ## DELETEME
-                print('\x1b[0m') ## DELETEME
                 data = None
 
             if data is None:
@@ -32,8 +30,6 @@ class JWTClient:
                 if not token_verified:
                     refreshed = self.perform_refresh()
                     if not refreshed:
-                        print("""🕤   \x1b[1;31;40mjwt.py:36    invalid data, login again:""") ## DELETEME
-                        print('\x1b[0m') ## DELETEME
                         self.clear_tokens()
                         self.perform_auth()
         else:
@@ -119,7 +115,4 @@ if __name__ == "__main__":
     if next_url:
         lookup_2_data = client.list(endpoint=next_url)
         results += lookup_2_data.get('results')
-        print("""🖍️   \x1b[1;36;40mjwt.py:125   Second lookup result length:""") ## DELETEME
-        print(len(results)) ## DELETEME
-        print('\x1b[0m') ## DELETEME
 
